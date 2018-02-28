@@ -13,8 +13,8 @@ export class AppComponent {
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
   foods = [
-    {value: 'sebraeHomolog', viewValue: 'Sebrae Homolog'},
-    {value: 'empretex', viewValue: 'Empretec'}
+    {value: 'sebraeHomolog', viewValue: 'Usuário'},
+    {value: 'empretex', viewValue: 'Psicólogo'}
   ];
   selected2: any;
   constructor(){
