@@ -1,0 +1,118 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<mat-toolbar color="primary">
+  <div  [routerLink]="['/']">Painel Admin</div>
+  <span class="example-spacer"></span>
+  <div class="example-icon"><img width="120" alt="Angular Logo" src="./assets/images/sebrae-logo.png"></div>
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Sair</button>
+  </mat-menu>
+  </mat-toolbar>
+
+  <div style="width: 100%; float: left; height:40px;"></div>
+
+  <div style="width: 100%; float: left;">
+      <div style="width: 40%; float: left;">
+          <div class="button-row">
+              <button [routerLink]="['/']" mat-button>Home</button>
+              <a mat-raised-button [routerLink]="['/usuarios']">Usuarios</a>
+              <a mat-raised-button [routerLink]="['/notificacoes']">Notificaçôes</a>
+              <a mat-raised-button [routerLink]="['/links']">Links</a>
+              <a mat-raised-button [routerLink]="['/backup']">Backup</a>
+            </div>
+      </div>
+      <div style=" margin-right: 40px; margin-top: -15px; float: right;">
+          <mat-form-field>
+              <mat-select [(value)]="selected2" placeholder="Todas as contas >">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{ food.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+      </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <div class="example-container mat-elevation-z8" style="width:60%; margin-left:20px;">
+      <div class="example-header">
+          <mat-form-field>
+              <input matInput placeholder="Pesquisar...">
+          </mat-form-field>
+      </div>
+      
+      <mat-table #table [dataSource]="dataSource">
+    
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+        </ng-container>
+    
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    
+      <mat-paginator #paginator
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 20]"
+                     [showFirstLastButtons]="true">
+      </mat-paginator>
+    </div>
+<!-- <div>
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <div class="title">
+            Painel Adm
+            </div>
+          </div>
+          <div class="col-6">
+          </div>
+          <div class="col-2">
+            <img width="120" alt="Angular Logo" src="https://static1.squarespace.com/static/556c9bf4e4b0de57cb590a0f/556de4d6e4b0d78223c0d53e/56e6f1f7e707eb97becae9ae/1457979151919/sebrae-logo.png">
+          </div>
+        </div>
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+          </button>
+        <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                Usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Notificaçôes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Links</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Backup</a>
+            </li>
+          </ul>
+
+
+      </div>
+</div> -->
+
